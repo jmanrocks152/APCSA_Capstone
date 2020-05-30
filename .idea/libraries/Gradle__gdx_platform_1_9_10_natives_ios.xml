@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Gradle: gdx-platform-1.9.10-natives-ios">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-platform/1.9.10/f301537137e0dffa0c84b6c6626dc8de51877f8a/gdx-platform-1.9.10-natives-ios.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-platform/1.9.10/f301537137e0dffa0c84b6c6626dc8de51877f8a/gdx-platform-1.9.10-natives-ios.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

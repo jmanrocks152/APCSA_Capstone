@@ -6,7 +6,6 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -14,6 +13,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.Input.Keys;
 
 public class NullpoPuyo extends ApplicationAdapter {
 	//Initializes the variables required for graphics
@@ -23,6 +23,7 @@ public class NullpoPuyo extends ApplicationAdapter {
 	TextureAtlas textureAtlas;
 	OrthographicCamera camera;
 	ExtendViewport viewport;
+	Board board;
 
 
 
@@ -38,14 +39,30 @@ public class NullpoPuyo extends ApplicationAdapter {
 		Graphics.DisplayMode mode = Gdx.graphics.getDisplayMode();
 		//Change res to native fullscreen
 		Gdx.graphics.setFullscreenMode(mode);
+
+		board = new Board();
 	}
 
 	@Override
 	public void render() {
-		//Renders the backgroud and sprites of the game
+		//Renders the background and sprites of the game
 		Gdx.gl.glClearColor(0.57f, 0.77f, 0.85f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		//TODO: Try to render X with coordinate system and see how it goes, add X to sprite sheet
+		//TODO: Add input functionality with one test pair
 		batch.begin();
+		//Checks for input and moves the PuyoPair accordingly
+		if(Gdx.input.isKeyPressed(Keys.LEFT))
+			marioX -= Gdx.graphics.getDeltaTime() * marioSpeed;
+		if(Gdx.input.isKeyPressed(Keys.DPAD_RIGHT))
+			marioX += Gdx.graphics.getDeltaTime() * marioSpeed;
+		if(Gdx.input.isKeyPressed(Keys.DPAD_UP))
+			marioY += Gdx.graphics.getDeltaTime() * marioSpeed;
+		if(Gdx.input.isKeyPressed(Keys.DPAD_DOWN))
+			marioY -= Gdx.graphics.getDeltaTime() * marioSpeed;
+
+
+
 		batch.end();
 	}
 
