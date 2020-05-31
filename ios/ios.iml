@@ -38,5 +38,7 @@
     <orderEntry type="library" exported="" name="Gradle: robovm-objc-2.3.8" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gdx-box2d-1.9.10" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gdx-1.9.10" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: annotations-java5-15.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: annotations-java5-15.0" level="project" />
   </component>
 </module>

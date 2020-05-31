@@ -23,9 +23,9 @@ public class NullpoPuyo extends ApplicationAdapter {
 	TextureAtlas textureAtlas;
 	OrthographicCamera camera;
 	ExtendViewport viewport;
+
+	//Initializes the board holding the game logic
 	Board board;
-
-
 
 	@Override
 	public void create() {
@@ -40,6 +40,7 @@ public class NullpoPuyo extends ApplicationAdapter {
 		//Change res to native fullscreen
 		Gdx.graphics.setFullscreenMode(mode);
 
+		//Instantiates the variables required for game logic
 		board = new Board();
 	}
 
@@ -52,17 +53,26 @@ public class NullpoPuyo extends ApplicationAdapter {
 		//TODO: Add input functionality with one test pair
 		batch.begin();
 		//Checks for input and moves the PuyoPair accordingly
-		if(Gdx.input.isKeyPressed(Keys.LEFT))
-			marioX -= Gdx.graphics.getDeltaTime() * marioSpeed;
-		if(Gdx.input.isKeyPressed(Keys.DPAD_RIGHT))
-			marioX += Gdx.graphics.getDeltaTime() * marioSpeed;
-		if(Gdx.input.isKeyPressed(Keys.DPAD_UP))
-			marioY += Gdx.graphics.getDeltaTime() * marioSpeed;
-		if(Gdx.input.isKeyPressed(Keys.DPAD_DOWN))
-			marioY -= Gdx.graphics.getDeltaTime() * marioSpeed;
+		if(Gdx.input.isKeyJustPressed(Keys.LEFT)) {
+			board.moveOneLeft();
+		}
 
+		if(Gdx.input.isKeyJustPressed(Keys.RIGHT)) {
+			board.moveOneRight();
+		}
 
+		if(Gdx.input.isKeyJustPressed(Keys.UP) || Gdx.input.isKeyJustPressed(Keys.X)) {
+			board.rotate90Right();
+		}
 
+		if(Gdx.input.isKeyJustPressed(Keys.SPACE)) {
+			board.hardDrop();
+		}
+
+		//Renders the activePuyoPair's Puyos
+		drawPuyoPair();
+		//TODO: Add check for popped puyos here
+		//TODO: Add PC Check here
 		batch.end();
 	}
 
@@ -95,5 +105,27 @@ public class NullpoPuyo extends ApplicationAdapter {
 
 			sprites.put(region.name, sprite);
 		}
+	}
+
+	//Renders the activePuyoPair's Puyos
+	private void drawPuyoPair() {
+		int topR = board.getActivePuyoPair().getTopRow();
+		int topC = board.getActivePuyoPair().getTopCol();
+		int botR = board.getActivePuyoPair().getBotRow();
+		int botC = board.getActivePuyoPair().getBotRow();
+
+		Puyo.Color topColor = board.getActivePuyoPair().getTopColor();
+		Puyo.Color botColor = board.getActivePuyoPair().getBotColor();
+
+		String topColorString = topColor.toString();
+		String botColorString = botColor.toString();
+
+		int topX = board.colToPixels(topC);
+		int topY = board.rowToPixels(topR);
+		int botX = board.colToPixels(botC);
+		int botY = board.rowToPixels(botR);
+
+		drawSprite("PPTPuyo" + topColorString, topX, topY);
+		drawSprite("PPTPuyo" + botColorString, botX, botY);
 	}
 }

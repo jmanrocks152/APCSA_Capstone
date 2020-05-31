@@ -1,5 +1,6 @@
 package com.puyo.game;
 
+//The class representing a singular Puyo
 public class Puyo {
     //Instance variable representing a singular puyo's color
     private Color color;
@@ -60,7 +61,7 @@ public class Puyo {
         RED, GREEN, BLUE, YELLOW, PURPLE, EMPTY;
 
         //Turns the given number into a Puyo Color
-        private Color numberToColor(int number) {
+        public static Color numberToColor(int number) {
             switch(number) {
                 case 0:
                     return RED;
