@@ -31,4 +31,6 @@ public class PuyoString {
     public int getStringLength() {
         return puyoString.size();
     }
+
+    //Gets the Puyo within puyoString
 }

@@ -19,6 +19,8 @@ public class Board {
     boolean failState = false;
     //Initializes an empty placeholder Puyo
     Puyo emptyPuyo = new Puyo(Puyo.Color.EMPTY);
+    //Initializes the puyoString ArrayList, which will store strings of orthogonally adjacent Puyos
+    ArrayList<Puyo> puyoString = new ArrayList<>();
 
     public Board() {
         //Fills the board with emptyPuyos to signify it is empty
@@ -206,6 +208,7 @@ public class Board {
         }
     }
 
+    //TODO: Make a switch for the currentOrientation, add cases for orientation = 180, 270
     //Rotates the PuyoPair 90 degrees to the right, shifting the PuyoPair to the left if attempted at the rightmost border
     public void rotate90Right() {
         int currentOrientation = activePuyoPair.getOrientation();
@@ -259,15 +262,38 @@ public class Board {
         if(checkEmptyBoard()) {
             return true;
         }
+
+        else {
+            return false;
+        }
     }
 
-    //TODO:
     //Pops the Puyo at the given coordinates
     private void popPuyo(Puyo puyo) {
-        
+        int currentRow = puyo.getRow();
+        int currentColumn = puyo.getCol();
+        board[currentRow][currentColumn] = emptyPuyo;
     }
 
-    //Checks the board for any strings of 4 or greater adjacent orthogonally to each other
+    //Pops a given PuyoString, making them fall as necessary
+    private void popPuyoString() {
+        int previousCol = 0;
+        int currentCol, currentRow, highestRow;
+        while(puyoString.isEmpty() == false) {
+            currentCol = puyoString.get(0).getCol();
+            currentRow = puyoString.get(0).getRow();
+
+            if(currentCol != previousCol) {
+                highestRow = 0;
+            }
+
+            if()
+        }
+    }
+
+    //TODO: Checks the board for any strings of 4 or greater adjacent orthogonally to each other
+
+    //TODO: Write game over check
 
     //TODO: Write method that shifts PuyoPair up if [2][3] is occupied
 

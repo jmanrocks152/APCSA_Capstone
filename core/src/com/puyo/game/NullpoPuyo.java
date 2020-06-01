@@ -1,5 +1,6 @@
 package com.puyo.game;
 
+import java.awt.Dimension;
 import java.util.HashMap;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -19,6 +20,9 @@ public class NullpoPuyo extends ApplicationAdapter {
 	//Initializes the variables required for graphics
 	final HashMap<String, Sprite> sprites = new HashMap<>();
 
+	public static final float DISPLAY_WIDTH = 1920;
+	public static final float DISPLAY_HEIGHT = 1080;
+
 	SpriteBatch batch;
 	TextureAtlas textureAtlas;
 	OrthographicCamera camera;
@@ -34,7 +38,8 @@ public class NullpoPuyo extends ApplicationAdapter {
 		textureAtlas = new TextureAtlas("sprites.txt");
 		addSprites();
 		camera = new OrthographicCamera();
-		viewport = new ExtendViewport(1920, 1080, camera);
+		//TODO: Set the viewport dimensions based on the user's native monitor resolution
+		viewport = new ExtendViewport(DISPLAY_WIDTH, DISPLAY_HEIGHT, camera);
 		//Get resolution of current display
 		Graphics.DisplayMode mode = Gdx.graphics.getDisplayMode();
 		//Change res to native fullscreen
