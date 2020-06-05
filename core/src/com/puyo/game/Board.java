@@ -287,7 +287,7 @@ public class Board {
                 highestRow = 0;
             }
 
-            if()
+//            if()
         }
     }
 
